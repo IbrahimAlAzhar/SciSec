@@ -148,26 +148,6 @@ export OPENAI_API_KEY=...
 
 ---
 
-## Data
-
-| File | Content | Used for |
-|---|---|---|
-| `data/dataset_primary_500.csv` | 500 papers: id, title, full text, parsed sections, author-stated limitations, human-reviewer weaknesses | test set |
-| `data/dataset_secondary_280.csv`, `data/dataset_tertiary_200.csv` | disjoint training papers (overlap with the test set removed) | SFT / GRPO training |
-| `data/defense_test_pairs.*` | 990 documents: one benign and one attacked version for each of 495 test papers, with the exact inserted span | detection and sanitization |
-| `data/argar_*.csv.gz`, `data/btr_*.csv.gz` | repackaging and perturbation attacks, split 50/50 by paper | generalisation |
-
-<!-- TODO: say where the data can be downloaded (anonymous link for review),
-     the source venue(s) and year(s) of the papers, and their license. -->
-
-The attacked documents are released as data so that results can be reproduced without the attack code. In each pair, the benign and attacked documents come from the same rendering step, so they differ only by the inserted span.
-
-Every script reads its input paths from command-line arguments or environment variables. Point them at your local copy, e.g.:
-
-```bash
-export DATA_DIR=$PWD/data
-export MODEL_DIR=/path/to/models
-```
 
 <!-- TODO: check which variable / argument names your scripts actually read, and list them here. -->
 
